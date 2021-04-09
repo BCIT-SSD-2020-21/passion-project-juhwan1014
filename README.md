@@ -51,7 +51,7 @@
 * Firestore set up
 
 ###### Milestone5
-* Complete Search Hitory Page
+* Complete Search History Page
 * Add functions which is nice to have
 * Deploying
 

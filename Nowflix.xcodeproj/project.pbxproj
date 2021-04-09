@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,9 @@
 		188BACC5261FB69A00691F16 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 188BACC3261FB69A00691F16 /* Main.storyboard */; };
 		188BACC7261FB69D00691F16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 188BACC6261FB69D00691F16 /* Assets.xcassets */; };
 		188BACCA261FB69D00691F16 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 188BACC8261FB69D00691F16 /* LaunchScreen.storyboard */; };
+		188BACD426200ACF00691F16 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 188BACD326200ACF00691F16 /* GoogleService-Info.plist */; };
+		188BACE92620164B00691F16 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188BACE82620164B00691F16 /* RegisterViewController.swift */; };
+		2ADEB0C1F4652AA1C3681118 /* Pods_Nowflix.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 346A99F47616E36768586A77 /* Pods_Nowflix.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,11 @@
 		188BACC6261FB69D00691F16 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		188BACC9261FB69D00691F16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		188BACCB261FB69D00691F16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		188BACD326200ACF00691F16 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		188BACE82620164B00691F16 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		346A99F47616E36768586A77 /* Pods_Nowflix.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Nowflix.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5869EE2911FBE5E5CDFA5DA1 /* Pods-Nowflix.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nowflix.release.xcconfig"; path = "Target Support Files/Pods-Nowflix/Pods-Nowflix.release.xcconfig"; sourceTree = "<group>"; };
+		F6E08DE8370AD00FB1922F36 /* Pods-Nowflix.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nowflix.debug.xcconfig"; path = "Target Support Files/Pods-Nowflix/Pods-Nowflix.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +39,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2ADEB0C1F4652AA1C3681118 /* Pods_Nowflix.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		09124285CB60E8FCFDD0A227 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				346A99F47616E36768586A77 /* Pods_Nowflix.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		12F342BA137E7672660DDE5D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F6E08DE8370AD00FB1922F36 /* Pods-Nowflix.debug.xcconfig */,
+				5869EE2911FBE5E5CDFA5DA1 /* Pods-Nowflix.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		188BACB1261FB69A00691F16 = {
 			isa = PBXGroup;
 			children = (
 				188BACBC261FB69A00691F16 /* Nowflix */,
 				188BACBB261FB69A00691F16 /* Products */,
+				12F342BA137E7672660DDE5D /* Pods */,
+				09124285CB60E8FCFDD0A227 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +84,25 @@
 		188BACBC261FB69A00691F16 /* Nowflix */ = {
 			isa = PBXGroup;
 			children = (
+				188BACE72620150C00691F16 /* Controller */,
 				188BACBD261FB69A00691F16 /* AppDelegate.swift */,
 				188BACBF261FB69A00691F16 /* SceneDelegate.swift */,
-				188BACC1261FB69A00691F16 /* ViewController.swift */,
 				188BACC3261FB69A00691F16 /* Main.storyboard */,
 				188BACC6261FB69D00691F16 /* Assets.xcassets */,
 				188BACC8261FB69D00691F16 /* LaunchScreen.storyboard */,
 				188BACCB261FB69D00691F16 /* Info.plist */,
+				188BACD326200ACF00691F16 /* GoogleService-Info.plist */,
 			);
 			path = Nowflix;
+			sourceTree = "<group>";
+		};
+		188BACE72620150C00691F16 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				188BACC1261FB69A00691F16 /* ViewController.swift */,
+				188BACE82620164B00691F16 /* RegisterViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +112,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 188BACCE261FB69D00691F16 /* Build configuration list for PBXNativeTarget "Nowflix" */;
 			buildPhases = (
+				EFBA650A5AAC49B390E7F6CC /* [CP] Check Pods Manifest.lock */,
 				188BACB6261FB69A00691F16 /* Sources */,
 				188BACB7261FB69A00691F16 /* Frameworks */,
 				188BACB8261FB69A00691F16 /* Resources */,
+				03EBE230396763BDDF51FC89 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -125,12 +165,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				188BACCA261FB69D00691F16 /* LaunchScreen.storyboard in Resources */,
+				188BACD426200ACF00691F16 /* GoogleService-Info.plist in Resources */,
 				188BACC7261FB69D00691F16 /* Assets.xcassets in Resources */,
 				188BACC5261FB69A00691F16 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		03EBE230396763BDDF51FC89 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Nowflix/Pods-Nowflix-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Nowflix/Pods-Nowflix-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Nowflix/Pods-Nowflix-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EFBA650A5AAC49B390E7F6CC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Nowflix-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		188BACB6261FB69A00691F16 /* Sources */ = {
@@ -140,6 +223,7 @@
 				188BACC2261FB69A00691F16 /* ViewController.swift in Sources */,
 				188BACBE261FB69A00691F16 /* AppDelegate.swift in Sources */,
 				188BACC0261FB69A00691F16 /* SceneDelegate.swift in Sources */,
+				188BACE92620164B00691F16 /* RegisterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +367,7 @@
 		};
 		188BACCF261FB69D00691F16 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F6E08DE8370AD00FB1922F36 /* Pods-Nowflix.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -301,6 +386,7 @@
 		};
 		188BACD0261FB69D00691F16 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5869EE2911FBE5E5CDFA5DA1 /* Pods-Nowflix.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
