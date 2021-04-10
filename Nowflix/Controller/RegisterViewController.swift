@@ -17,15 +17,23 @@ class RegisterViewController: UIViewController {
     @IBAction func registerButtonTapped(_ sender: UIButton) {
         //register our user via FirebaseAuth
         
-        let alert = UIAlertController(title: "Please, try again", message: "Sign up Error!", preferredStyle: .alert  )
-        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        
+        let SuccessAlert = UIAlertController(title: "Welcome to NOWFLIX!", message: "Successfully sign up!", preferredStyle: .alert  )
+        
+        let SucceccAction = UIAlertAction(title: "OK", style: .default) {
+            (action) in self.performSegue(withIdentifier: "showNowflixView", sender: self)
+        }
+        
+        
+        let ErrorAlert = UIAlertController(title: "Please, try again", message: "Sign up Error!", preferredStyle: .alert  )
+        let ErrorAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         
         guard let email = emailTextField.text, let password = passwordTextField.text, let confirm = confirmTextField.text
 //        else {return}
         else{
         
-        alert.addAction(action)
-        present(alert, animated: true, completion: nil)
+            ErrorAlert.addAction(ErrorAction)
+        present(ErrorAlert, animated: true, completion: nil)
         
             return
         }
@@ -36,6 +44,11 @@ class RegisterViewController: UIViewController {
             if let err = error {
                 print("Error creating firebase user: \(err)")
             } else {
+                
+                SuccessAlert.addAction(SucceccAction)
+                
+                self.present(SuccessAlert, animated: true, completion: nil)
+                
                 print("Successfully created user \(String(describing: user))")
             }
         }
@@ -44,9 +57,9 @@ class RegisterViewController: UIViewController {
         
         else{
         
-        alert.addAction(action)
-        present(alert, animated: true, completion: nil)
-        
+            ErrorAlert.addAction(ErrorAction)
+        present(ErrorAlert, animated: true, completion: nil)
+//            print("이거슨 액션\(action)")
             return
         }
         

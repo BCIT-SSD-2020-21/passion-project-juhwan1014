@@ -35,9 +35,11 @@ class ViewController: UIViewController {
                 
                 let alert = UIAlertController(title: "Welcome to NOWFLIX!", message: "Successfully sign in!", preferredStyle: .alert  )
                 
-                let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+                let SucceccAction = UIAlertAction(title: "OK", style: .default) {
+                    (action) in self.performSegue(withIdentifier: "showNowflixView", sender: self)
+                }
                 
-                alert.addAction(action)
+                alert.addAction(SucceccAction)
                 
                 self.present(alert, animated: true, completion: nil)
                 
