@@ -259,18 +259,66 @@
         <!--Search-->
         <scene sceneID="Ci7-rb-Bms">
             <objects>
-                <viewController id="6X7-zz-LAz" sceneMemberID="viewController">
+                <viewController id="6X7-zz-LAz" customClass="SearchBarViewController" customModule="Nowflix" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dQb-PE-fgs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Wjg-rv-afr">
+                                <rect key="frame" x="0.0" y="144" width="414" height="669"/>
+                                <color key="backgroundColor" red="0.031372549019607843" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="PAQ-kn-AuP">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="TIb-um-a70">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="E2t-Ce-5UW">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" text="" translatesAutoresizingMaskIntoConstraints="NO" id="xxZ-L6-T6C">
+                                <rect key="frame" x="0.0" y="88" width="414" height="56"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="barTintColor" red="0.031372549019607843" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <color key="barTintColor" red="0.031372549019607843" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                </variation>
+                                <connections>
+                                    <outlet property="delegate" destination="6X7-zz-LAz" id="hrK-Dg-fpW"/>
+                                </connections>
+                            </searchBar>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="oWf-MA-HuT"/>
                         <color key="backgroundColor" red="0.031372549019607843" green="0.0" blue="0.0" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="oWf-MA-HuT" firstAttribute="trailing" secondItem="Wjg-rv-afr" secondAttribute="trailing" id="8xw-Ps-oVk"/>
+                            <constraint firstItem="oWf-MA-HuT" firstAttribute="bottom" secondItem="Wjg-rv-afr" secondAttribute="bottom" id="WcR-RQ-txl"/>
+                            <constraint firstItem="oWf-MA-HuT" firstAttribute="trailing" secondItem="xxZ-L6-T6C" secondAttribute="trailing" id="XgG-kd-Laj"/>
+                            <constraint firstItem="Wjg-rv-afr" firstAttribute="top" secondItem="xxZ-L6-T6C" secondAttribute="bottom" id="XiB-DZ-Hmm"/>
+                            <constraint firstItem="Wjg-rv-afr" firstAttribute="leading" secondItem="oWf-MA-HuT" secondAttribute="leading" id="c5G-Cp-52S"/>
+                            <constraint firstItem="xxZ-L6-T6C" firstAttribute="top" secondItem="oWf-MA-HuT" secondAttribute="top" id="vjN-kK-gQG"/>
+                            <constraint firstItem="xxZ-L6-T6C" firstAttribute="leading" secondItem="oWf-MA-HuT" secondAttribute="leading" id="xBP-7t-e3R"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" id="07B-f8-8xB"/>
+                    <connections>
+                        <outlet property="resultCollectionView" destination="Wjg-rv-afr" id="Y5E-tn-7au"/>
+                        <outlet property="searchBar" destination="xxZ-L6-T6C" id="c5h-Ot-du6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="76x-3G-bKz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3277" y="-206"/>
+            <point key="canvasLocation" x="3276.811594202899" y="-206.25"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WD7-gZ-qXr">
@@ -514,7 +562,7 @@
                             <constraint firstItem="JZK-7i-gRW" firstAttribute="leading" secondItem="QGK-F4-CRe" secondAttribute="leading" id="zzq-Cr-w75"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" image="magnifyingglass" catalog="system" id="hC7-RS-t3z"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="house.fill" catalog="system" id="hC7-RS-t3z"/>
                     <navigationItem key="navigationItem" id="gfB-BN-Rex"/>
                     <size key="freeformSize" width="414" height="1200"/>
                 </viewController>
@@ -708,7 +756,7 @@
         <!--Recommend List View Controller-->
         <scene sceneID="4zV-BK-Tga">
             <objects>
-                <viewController id="uNy-m6-Xf0" customClass="RecommendListViewController" customModule="MyNetflix" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="uNy-m6-Xf0" customClass="RecommendListViewController" customModule="Nowflix" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wPy-eB-Xku">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -731,7 +779,7 @@
                                     <inset key="sectionInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RecommendCell" id="NNe-B2-VOp" customClass="RecommendCell" customModule="MyNetflix" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RecommendCell" id="NNe-B2-VOp" customClass="RecommendCell" customModule="Nowflix" customModuleProvider="target">
                                         <rect key="frame" x="8" y="0.0" width="120" height="160"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="W5P-Yi-9VD">
@@ -783,6 +831,7 @@
         <segue reference="L6j-iz-ymY"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="img_header" width="400" height="450"/>
         <image name="info.circle" catalog="system" width="128" height="121"/>
         <image name="lock.circle" catalog="system" width="128" height="121"/>
