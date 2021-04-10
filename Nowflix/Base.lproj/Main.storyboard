@@ -389,7 +389,7 @@
             <objects>
                 <viewController id="Yfp-CI-NJV" customClass="HomeViewController" customModule="Nowflix" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QY7-HB-0oI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentInsetAdjustmentBehavior="never" translatesAutoresizingMaskIntoConstraints="NO" id="JZK-7i-gRW">
@@ -495,18 +495,19 @@
                         <viewLayoutGuide key="safeArea" id="QGK-F4-CRe"/>
                         <color key="backgroundColor" red="0.031372549020000001" green="0.0" blue="0.0" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="JZK-7i-gRW" secondAttribute="bottom" constant="-221" id="2uE-Q2-3gC"/>
-                            <constraint firstItem="JZK-7i-gRW" firstAttribute="centerX" secondItem="QY7-HB-0oI" secondAttribute="centerX" id="QJT-Y9-B3Z"/>
-                            <constraint firstItem="JZK-7i-gRW" firstAttribute="top" secondItem="QY7-HB-0oI" secondAttribute="topMargin" constant="-88" id="mCf-OC-npb"/>
-                            <constraint firstItem="JZK-7i-gRW" firstAttribute="leading" secondItem="QGK-F4-CRe" secondAttribute="leading" id="mpi-hi-j1Q"/>
+                            <constraint firstItem="JZK-7i-gRW" firstAttribute="centerX" secondItem="QY7-HB-0oI" secondAttribute="centerX" id="0EC-ov-IL4"/>
+                            <constraint firstItem="JZK-7i-gRW" firstAttribute="top" secondItem="QY7-HB-0oI" secondAttribute="topMargin" constant="-88" id="Ahv-AY-Ihm"/>
+                            <constraint firstItem="JZK-7i-gRW" firstAttribute="bottom" secondItem="QGK-F4-CRe" secondAttribute="bottom" id="PNN-Pv-vb1"/>
+                            <constraint firstItem="JZK-7i-gRW" firstAttribute="leading" secondItem="QGK-F4-CRe" secondAttribute="leading" id="zzq-Cr-w75"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="magnifyingglass" catalog="system" id="hC7-RS-t3z"/>
                     <navigationItem key="navigationItem" id="gfB-BN-Rex"/>
+                    <size key="freeformSize" width="414" height="1200"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KZa-4t-a2c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3278" y="516"/>
+            <point key="canvasLocation" x="3278" y="566"/>
         </scene>
         <!--Search-->
         <scene sceneID="YN2-zr-E1P">

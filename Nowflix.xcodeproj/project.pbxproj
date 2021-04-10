@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		187F52CC26214BA40004A9F1 /* RecommendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187F52CB26214BA40004A9F1 /* RecommendListViewController.swift */; };
 		188BACBE261FB69A00691F16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188BACBD261FB69A00691F16 /* AppDelegate.swift */; };
 		188BACC0261FB69A00691F16 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188BACBF261FB69A00691F16 /* SceneDelegate.swift */; };
 		188BACC2261FB69A00691F16 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188BACC1261FB69A00691F16 /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		187F52CB26214BA40004A9F1 /* RecommendListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendListViewController.swift; sourceTree = "<group>"; };
 		188BACBA261FB69A00691F16 /* Nowflix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nowflix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		188BACBD261FB69A00691F16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		188BACBF261FB69A00691F16 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				188BACC1261FB69A00691F16 /* ViewController.swift */,
 				188BACE82620164B00691F16 /* RegisterViewController.swift */,
 				188BACEF26213D8900691F16 /* HomeViewController.swift */,
+				187F52CB26214BA40004A9F1 /* RecommendListViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 				188BACF026213D8900691F16 /* HomeViewController.swift in Sources */,
 				188BACC2261FB69A00691F16 /* ViewController.swift in Sources */,
 				188BACBE261FB69A00691F16 /* AppDelegate.swift in Sources */,
+				187F52CC26214BA40004A9F1 /* RecommendListViewController.swift in Sources */,
 				188BACC0261FB69A00691F16 /* SceneDelegate.swift in Sources */,
 				188BACE92620164B00691F16 /* RegisterViewController.swift in Sources */,
 			);
