@@ -22,8 +22,19 @@ class SearchBarViewController: UIViewController {
 }
     
     extension SearchBarViewController: UISearchBarDelegate{
+        
+        private func dismissKeyboard(){
+            searchBar.resignFirstResponder()
+        }
+        
         func searchBarSearchButtonClicked(_ searchBar: UISearchBar){
-            // search start
+          // Treat the keyboard to go down when it comes up
+            dismissKeyboard()
+         // whether or not the search term exists
+            guard let searchTerm = searchBar.text,
+                  searchTerm.isEmpty == false
+            else {return}
+            
             
             print("\(searchBar.text)")
         }
