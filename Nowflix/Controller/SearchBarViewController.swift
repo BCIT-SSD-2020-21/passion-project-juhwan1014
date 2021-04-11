@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import Kingfisher
 class SearchBarViewController: UIViewController {
 
     
@@ -14,11 +14,63 @@ class SearchBarViewController: UIViewController {
     
     @IBOutlet weak var resultCollectionView: UICollectionView!
     
+    
+    var movies: [Movie] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
+}
+
+
+extension SearchBarViewController: UICollectionViewDataSource{
+   
+    //how many?
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return movies.count
+    }
+    
+    //how represent?
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+      guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ResultCell", for: indexPath) as? ResultCell
+      else {return UICollectionViewCell()}
+        
+        let movie = movies[indexPath.item]
+        let url = URL(string: movie.thumnailPath)!
+        
+        cell.movieThumnail.kf.setImage(with: url)
+        return cell
+         
+    }
+    
+  
+    
+   
+}
+extension SearchBarViewController: UICollectionViewDelegate{
+    
+}
+extension SearchBarViewController: UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let margin: CGFloat = 8
+        let itemSpacing: CGFloat = 10
+        
+        let width = (collectionView.bounds.width - margin * 2 - itemSpacing * 2) / 3
+        let height = width * 10/7
+        
+        return CGSize(width: width, height: height)
+        
+    }
+}
+
+
+
+class ResultCell: UICollectionViewCell{
+    @IBOutlet weak var movieThumnail: UIImageView!
 }
     
     extension SearchBarViewController: UISearchBarDelegate{
@@ -37,7 +89,14 @@ class SearchBarViewController: UIViewController {
             
             SearchAPI.search(searchTerm) { movies in
                 // collectionView
+                print("how many ? \(movies.count)")
+                DispatchQueue.main.async {
+                    self.movies = movies
+                    self.resultCollectionView.reloadData()
+                    
+                }
                 
+               
             }
             
             print("\(searchBar.text)")
@@ -75,20 +134,54 @@ class SearchAPI {
          
             let string = String(data: resultData, encoding: .utf8)
              
-            print("---> 여기가 리절트 \(string)")
-            
+            let movies = SearchAPI.parseMovies(resultData)
+            completion(movies)
+            print("--> result: \(movies.count)")
 //            completion([Movie])
             
         }
         dataTask.resume()
     }
-}
-
-struct Response {
     
+    static func parseMovies(_ data: Data) -> [Movie] {
+        let decoder = JSONDecoder()
+        
+        do {
+            let response = try decoder.decode(Response.self, from: data)
+            let movies = response.movies
+            return movies
+        }catch let error {
+            print("--> parsing error: \(error.localizedDescription)")
+            return []
+        }
+        
+    }
 }
 
-struct Movie {
+struct Response: Codable {
+    let resultCount: Int
+    let movies: [Movie]
+    
+    enum CodingKeys: String, CodingKey{
+        case resultCount
+        case movies = "results"
+    }
+}
+
+struct Movie: Codable {
+    let title: String
+    let director: String
+    let thumnailPath: String
+    let previewURL: String
+    
+    
+    enum CodingKeys: String, CodingKey{
+        case title = "trackName"
+        case director = "artistName"
+        case thumnailPath = "artworkUrl100"
+        case previewURL = "previewUrl"
+        
+     }
     
 }
 
