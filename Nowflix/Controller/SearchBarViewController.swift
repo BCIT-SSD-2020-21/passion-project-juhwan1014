@@ -109,6 +109,8 @@ class SearchAPI {
         let session = URLSession(configuration: .default)
         
         var urlComponents = URLComponents(string: "https://itunes.apple.com/search?")!
+    
+        
         let mediaQuery = URLQueryItem(name: "media", value: "movie")
         let entityQuery = URLQueryItem(name: "entity", value: "movie")
         let termQuery = URLQueryItem(name: "term", value: term)
@@ -148,6 +150,9 @@ class SearchAPI {
         
         do {
             let response = try decoder.decode(Response.self, from: data)
+//            print("하하하하하하하하하하하하하")
+//            print("\(response)")
+//            print("호호호호호호호호호호호호호")
             let movies = response.movies
             return movies
         }catch let error {
