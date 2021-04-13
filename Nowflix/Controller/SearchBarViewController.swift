@@ -118,7 +118,10 @@ class SearchAPI {
         urlComponents.queryItems?.append(entityQuery)
         urlComponents.queryItems?.append(termQuery)
         
+//        print("이거 바로 밑에가 유알엘 컴포넌트")
+//        print(urlComponents)
         let requestURL = urlComponents.url!
+        
         
         let dataTask = session.dataTask(with: requestURL) { data, response, error in
             let successRange = 200..<300

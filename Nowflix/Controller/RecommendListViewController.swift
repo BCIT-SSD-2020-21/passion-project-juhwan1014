@@ -10,6 +10,7 @@ import UIKit
 class RecommendListViewController: UIViewController {
 
     @IBOutlet weak var sectionTitle: UILabel!
+    
     let viewModel = RecommentListViewModel()
     
    
@@ -31,7 +32,7 @@ class RecommendListViewController: UIViewController {
 //               }
 //
 //        }
-     
+      
      
 //        print("바로여기바로여기바로여기 밑에밑에밑에바로밑에")
 //        apiCalling.getPopularData{
@@ -69,6 +70,20 @@ extension RecommendListViewController: UICollectionViewDataSource {
         return cell
     }
 }
+
+//extension RecommendListViewController: UICollectionViewDelegate{
+//    func gettingData() {
+//    MovieAPI.PopularMovieData{ popMovies in
+//        print("how many ? \(popMovies.count)")
+//        DispatchQueue.main.async {
+//            self.popMovies = popMovies
+//            self.resultCollectionView.reloadData()
+//
+//        }
+//    }
+//    }
+//}
+
 
 extension RecommendListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -153,11 +168,14 @@ class MovieFetcher {
 //
 //    }
     
+  
+    
   static func fetch(_ type: RecommentListViewModel.RecommendingType) -> [DummyItem] {
 //        print("호놀롤루 호놀롤루")
 //    print("\(popularMovies)")
 //    print("고무고무 제트 피스톨")
         
+   
         switch type {
         case .award:
             let movies = (1..<10).map { DummyItem(thumbnail: UIImage(named: "img_movie_\($0)")!) }
@@ -206,14 +224,28 @@ class MovieAPI {
             
             let string = String(data: resultData, encoding: .utf8)
             
-          print("지급부터 받아온 데이터를 출력해볼께")
-            print("\(string)")
+            let popMovies = MovieAPI.parseTheMovies(resultData)
+            completion(popMovies)
+            print("--> result: \(popMovies.count)")
         }
         
         DataTask.resume()
     }
     
-    
+    static func parseTheMovies(_ data: Data) -> [TheMovie] {
+        let decoder = JSONDecoder()
+        
+        do {
+            let response = try decoder.decode(MoviesData.self, from: data)
+
+            let movies = response.TheMovies
+            return movies
+        }catch let error {
+            print("--> parsing error: \(error.localizedDescription)")
+            return []
+        }
+        
+    }
 
     
     
@@ -271,7 +303,7 @@ class MovieAPI {
 
 
 
-struct MoviesData: Decodable {
+struct MoviesData: Codable {
     let TheMovies: [TheMovie]
 
     private enum CodingKeys: String, CodingKey{
@@ -279,7 +311,7 @@ struct MoviesData: Decodable {
     }
 }
 
-struct TheMovie: Decodable{
+struct TheMovie: Codable{
     let title: String?
     let year: String?
     let rate: Double?
