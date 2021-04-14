@@ -9,9 +9,12 @@ import UIKit
 
 class RecommendListViewController: UIViewController {
 
+    
+    
     @IBOutlet weak var sectionTitle: UILabel!
     
     let viewModel = RecommentListViewModel()
+    
     
    
 //    var apiCalling = MovieAPI()
@@ -137,7 +140,8 @@ class RecommendCell: UICollectionViewCell {
 }
 
 class MovieFetcher {
-    
+   
+ 
 //    private var apiSevice = MovieAPI()
 //    private var popularMovie = [TheMovie]()
 //
@@ -170,26 +174,145 @@ class MovieFetcher {
     
   
     
-  static func fetch(_ type: RecommentListViewModel.RecommendingType) -> [DummyItem] {
-//        print("호놀롤루 호놀롤루")
-//    print("\(popularMovies)")
-//    print("고무고무 제트 피스톨")
-        
+    static func fetch(_ type: RecommentListViewModel.RecommendingType) -> [DummyItem] {
+    
+    let session = URLSession(configuration: .default)
+    
+    var ImageUrlComponents = URLComponents(string: "http://image.tmdb.org/t/p/w300")!
+    
    
+    
+    
         switch type {
+        
         case .award:
-            let movies = (1..<10).map { DummyItem(thumbnail: UIImage(named: "img_movie_\($0)")!) }
-//            let movies = (1..<10).map { DummyItem(thumbnail: ) }
-            return movies
+            
+//
+//            var ImageURL: [String] = []
+//            var movies: [DummyItem]?
+//
+//
+//            MovieAPI.PopularMovieData
+//            { popMovies in
+//
+//                print("how many ? \(popMovies.count)")
+//                print("how many ? \(popMovies[0].posterImage)")
+//                print("제발 요놈 위에꺼가 출력되길....")
+//
+//                for i in 0...10{
+//                    ImageURL.append("http://image.tmdb.org/t/p/w300\(popMovies[i].posterImage!)")
+//
+//                }
+//
+//                print(ImageURL[0])
+//                print(ImageURL[1])
+//                print(ImageURL[2])
+//
+//                print("위에꺼 도나리도나리...")
+////                  return ImageURL
+//            }
+//
+//            DispatchQueue.main.async  {
+//            print("아래꺼 밖에서 선언한 이미지유알엘...")
+//            print(ImageURL)
+//            print("위에꺼 밖에서 선언한 이미지유알엘...")
+//
+////                 movies = (1..<10).map
+////                 {
+////                    DummyItem(thumbnail: UIImage(named: "img_movie_\($0)")!)
+////
+////                 }
+//                for i in (1..<10){
+//
+//                }
+//                movies = (1..<10).map
+//                {
+//                   DummyItem(thumbnail: UIImage(named: "img_movie_\($0)")!)
+//
+//                }
+//
+////                return movies
+//            }
+//
+//            guard let isthere = movies else {return []}
+//
+//               return isthere
+//
+////            return movies
+//
+//
+////            let movies = (1..<10).map { DummyItem(thumbnail: UIImage(named: "img_movie_\($0)")!) }
+////            return movies
+////            if let imageUrl = URL(string: "http://image.tmdb.org/t/p/w300/pgqgaUx1cJb5oZQQ5v0tNARCeBp.jpg" ){
+////                DispatchQueue.global().async{
+////                    if let data = try? Data(contentsOf: imageUrl){
+////                        DispatchQueue.main.async {
+////                            let movies = (1..<10).map { DummyItem(thumbnail: UIImage(data: data))
+////
+////                            }
+////                            return movies
+////                        }
+////
+////                    }
+////                }
+////            }
+//                       let movies = (1..<10).map
+//                        {
+//                           DummyItem(thumbnail: UIImage(named: "img_movie_\($0)")!)
+//
+//                        }
+//            return movies
+            
+            var ImageMovies: [DummyItem]?
+            for _ in (1..<10){
+               
+                do{
+                let url = URL(string: "http://image.tmdb.org/t/p/w300/tbVZ3Sq88dZaCANlUcewQuHQOaE.jpg")!
+            
+                let data = try Data(contentsOf: url)
+              
+                    ImageMovies?.append(DummyItem(thumbnail: UIImage(data: data)!))
+//                    return ImageMovies!
+                } catch let error {
+                    return []
+                }
+            
+            }
+            print(ImageMovies)
+            print("호이잇 시험 이거 위에")
+            return ImageMovies!
+//            let url = URL(string: "http://image.tmdb.org/t/p/w300/tbVZ3Sq88dZaCANlUcewQuHQOaE.jpg")!
+//
+//            let data = try Data(contentsOf: url!)
+//            let movies = (1..<10).map
+//             {
+//                DummyItem(thumbnail: UIImage(data: data)!)
+//
+//             }
+// return movies
+            
+            
         case .hot:
             let movies = (10..<19).map { DummyItem(thumbnail: UIImage(named: "img_movie_\($0)")!) }
+            print(movies)
+            print("시험시험")
+
             return movies
         case .my:
             let movies = (1..<10).map { $0 * 2 }.map { DummyItem(thumbnail: UIImage(named: "img_movie_\($0)")!) }
+            print(movies)
+            print("시험시험")
             return movies
         }
-    }
+            
+  
+            
+  }
     
+    
+    
+    
+  
  
 }
 
@@ -200,6 +323,7 @@ class MovieFetcher {
 
 class MovieAPI {
     
+//    static func PopularMovieData(completion: @escaping ([TheMovie])-> [DummyItem]){
     static func PopularMovieData(completion: @escaping ([TheMovie])-> Void){
         let session = URLSession(configuration: .default)
         
@@ -230,6 +354,7 @@ class MovieAPI {
         }
         
         DataTask.resume()
+        
     }
     
     static func parseTheMovies(_ data: Data) -> [TheMovie] {
