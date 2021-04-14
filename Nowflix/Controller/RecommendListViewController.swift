@@ -24,6 +24,10 @@ class RecommendListViewController: UIViewController {
         super.viewDidLoad()
         
         MovieAPI.PopularMovieData{(result) in print("쿨쿨 여기서 부터 리절트 \(result)")}
+
+        
+        
+        
 //        MovieAPI.getPopularData(){
 //            jsonData in
 //               // collectionView
@@ -126,7 +130,9 @@ class RecommentListViewModel {
     }
     
     func fetchItems() {
+        if MovieFetcher.fetch(type) != nil{
         self.items = MovieFetcher.fetch(type)
+        }
     }
 }
 
@@ -187,6 +193,7 @@ class MovieFetcher {
         
         case .award:
             
+//            let myGroup = DispatchGroup()
 //
 //            var ImageURL: [String] = []
 //            var movies: [DummyItem]?
@@ -222,65 +229,87 @@ class MovieFetcher {
 ////                    DummyItem(thumbnail: UIImage(named: "img_movie_\($0)")!)
 ////
 ////                 }
-//                for i in (1..<10){
+//            do{
+//                   let url = URL(string: "http://image.tmdb.org/t/p/w300/tbVZ3Sq88dZaCANlUcewQuHQOaE.jpg")!
 //
+//                   let data = try Data(contentsOf: url)
+//
+//                myGroup.enter()
+//                movies?.append(DummyItem(thumbnail: UIImage(data: data)!))
+//                myGroup.leave()
+//
+////                       ImageMovies.append(DummyItem(thumbnail: UIImage(data: data)!))
+//   //                    return ImageMovies!
+//                   }
+//            catch let error {
+//                print("깔깔깔깔깔깔깔깔깔")
+//                       print("\(error)")
+//                   }
+//
+//
+//            return movies!
+//            let movies = (1..<10).map { DummyItem(thumbnail: UIImage(named: "img_movie_\($0)")!) }
+//            return movies
+//            if let imageUrl = URL(string: "http://image.tmdb.org/t/p/w300/pgqgaUx1cJb5oZQQ5v0tNARCeBp.jpg" ){
+//                DispatchQueue.global().async{
+//                    if let data = try? Data(contentsOf: imageUrl){
+//                        DispatchQueue.main.async {
+//                            let movies = (1..<10).map { DummyItem(thumbnail: UIImage(data: data))
+//
+//                            }
+//                            return movies
+//                        }
+//
+//                    }
 //                }
-//                movies = (1..<10).map
-//                {
-//                   DummyItem(thumbnail: UIImage(named: "img_movie_\($0)")!)
+//            }
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+////                       let movies = (1..<10).map
+////                        {
+////                           DummyItem(thumbnail: UIImage(named: "img_movie_\($0)")!)
+////
+////                        }
+////            return movies
 //
+//            var ImageMovies: [DummyItem] = []
+//            DispatchQueue.main.async{
+//            for _ in (1..<10){
+//
+//                do{
+//                let url = URL(string: "http://image.tmdb.org/t/p/w300/tbVZ3Sq88dZaCANlUcewQuHQOaE.jpg")!
+//
+//                let data = try Data(contentsOf: url)
+//
+//                    ImageMovies.append(DummyItem(thumbnail: UIImage(data: data)!))
+////                    return ImageMovies!
+//                } catch let error {
+//                    return
 //                }
 //
-////                return movies
+//            }
 //            }
 //
-//            guard let isthere = movies else {return []}
+//            print(ImageMovies)
+//            print("호이잇 시험 이거 위에")
+//            return ImageMovies
 //
-//               return isthere
-//
-////            return movies
-//
-//
-////            let movies = (1..<10).map { DummyItem(thumbnail: UIImage(named: "img_movie_\($0)")!) }
-////            return movies
-////            if let imageUrl = URL(string: "http://image.tmdb.org/t/p/w300/pgqgaUx1cJb5oZQQ5v0tNARCeBp.jpg" ){
-////                DispatchQueue.global().async{
-////                    if let data = try? Data(contentsOf: imageUrl){
-////                        DispatchQueue.main.async {
-////                            let movies = (1..<10).map { DummyItem(thumbnail: UIImage(data: data))
-////
-////                            }
-////                            return movies
-////                        }
-////
-////                    }
-////                }
-////            }
-//                       let movies = (1..<10).map
-//                        {
-//                           DummyItem(thumbnail: UIImage(named: "img_movie_\($0)")!)
-//
-//                        }
-//            return movies
             
-            var ImageMovies: [DummyItem]?
-            for _ in (1..<10){
-               
-                do{
-                let url = URL(string: "http://image.tmdb.org/t/p/w300/tbVZ3Sq88dZaCANlUcewQuHQOaE.jpg")!
             
-                let data = try Data(contentsOf: url)
-              
-                    ImageMovies?.append(DummyItem(thumbnail: UIImage(data: data)!))
-//                    return ImageMovies!
-                } catch let error {
-                    return []
-                }
             
-            }
-            print(ImageMovies)
-            print("호이잇 시험 이거 위에")
-            return ImageMovies!
+            
+            
+            
+            
+            
 //            let url = URL(string: "http://image.tmdb.org/t/p/w300/tbVZ3Sq88dZaCANlUcewQuHQOaE.jpg")!
 //
 //            let data = try Data(contentsOf: url!)
@@ -290,18 +319,16 @@ class MovieFetcher {
 //
 //             }
 // return movies
-            
-            
+                let movies = (1..<10).map { DummyItem(thumbnail: UIImage(named: "img_movie_\($0)")!) }
+            return movies
         case .hot:
             let movies = (10..<19).map { DummyItem(thumbnail: UIImage(named: "img_movie_\($0)")!) }
-            print(movies)
-            print("시험시험")
+        
 
             return movies
         case .my:
             let movies = (1..<10).map { $0 * 2 }.map { DummyItem(thumbnail: UIImage(named: "img_movie_\($0)")!) }
-            print(movies)
-            print("시험시험")
+          
             return movies
         }
             

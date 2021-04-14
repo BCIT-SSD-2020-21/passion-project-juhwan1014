@@ -11,6 +11,9 @@
 		187F52D4262170810004A9F1 /* AppTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187F52D3262170810004A9F1 /* AppTabbarController.swift */; };
 		187F52D7262183920004A9F1 /* SearchBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187F52D6262183920004A9F1 /* SearchBarViewController.swift */; };
 		187F52DB2622DBAA0004A9F1 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 187F52DA2622DBAA0004A9F1 /* Kingfisher */; };
+		187F52E22626BB640004A9F1 /* Player.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 187F52E12626BB640004A9F1 /* Player.storyboard */; };
+		187F52E52626C3A80004A9F1 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187F52E42626C3A70004A9F1 /* PlayerViewController.swift */; };
+		187F52E82626C3B00004A9F1 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187F52E72626C3B00004A9F1 /* PlayerView.swift */; };
 		188BACBE261FB69A00691F16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188BACBD261FB69A00691F16 /* AppDelegate.swift */; };
 		188BACC0261FB69A00691F16 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188BACBF261FB69A00691F16 /* SceneDelegate.swift */; };
 		188BACC2261FB69A00691F16 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188BACC1261FB69A00691F16 /* ViewController.swift */; };
@@ -27,6 +30,9 @@
 		187F52CB26214BA40004A9F1 /* RecommendListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendListViewController.swift; sourceTree = "<group>"; };
 		187F52D3262170810004A9F1 /* AppTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabbarController.swift; sourceTree = "<group>"; };
 		187F52D6262183920004A9F1 /* SearchBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarViewController.swift; sourceTree = "<group>"; };
+		187F52E12626BB640004A9F1 /* Player.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Player.storyboard; sourceTree = "<group>"; };
+		187F52E42626C3A70004A9F1 /* PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		187F52E72626C3B00004A9F1 /* PlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		188BACBA261FB69A00691F16 /* Nowflix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nowflix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		188BACBD261FB69A00691F16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		188BACBF261FB69A00691F16 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -100,6 +106,9 @@
 				188BACC3261FB69A00691F16 /* Main.storyboard */,
 				188BACC6261FB69D00691F16 /* Assets.xcassets */,
 				188BACC8261FB69D00691F16 /* LaunchScreen.storyboard */,
+				187F52E12626BB640004A9F1 /* Player.storyboard */,
+				187F52E42626C3A70004A9F1 /* PlayerViewController.swift */,
+				187F52E72626C3B00004A9F1 /* PlayerView.swift */,
 				188BACCB261FB69D00691F16 /* Info.plist */,
 				188BACD326200ACF00691F16 /* GoogleService-Info.plist */,
 			);
@@ -186,6 +195,7 @@
 			files = (
 				188BACCA261FB69D00691F16 /* LaunchScreen.storyboard in Resources */,
 				188BACD426200ACF00691F16 /* GoogleService-Info.plist in Resources */,
+				187F52E22626BB640004A9F1 /* Player.storyboard in Resources */,
 				188BACC7261FB69D00691F16 /* Assets.xcassets in Resources */,
 				188BACC5261FB69A00691F16 /* Main.storyboard in Resources */,
 			);
@@ -243,8 +253,10 @@
 				188BACF026213D8900691F16 /* HomeViewController.swift in Sources */,
 				187F52D4262170810004A9F1 /* AppTabbarController.swift in Sources */,
 				187F52D7262183920004A9F1 /* SearchBarViewController.swift in Sources */,
+				187F52E82626C3B00004A9F1 /* PlayerView.swift in Sources */,
 				188BACC2261FB69A00691F16 /* ViewController.swift in Sources */,
 				188BACBE261FB69A00691F16 /* AppDelegate.swift in Sources */,
+				187F52E52626C3A80004A9F1 /* PlayerViewController.swift in Sources */,
 				187F52CC26214BA40004A9F1 /* RecommendListViewController.swift in Sources */,
 				188BACC0261FB69A00691F16 /* SceneDelegate.swift in Sources */,
 				188BACE92620164B00691F16 /* RegisterViewController.swift in Sources */,

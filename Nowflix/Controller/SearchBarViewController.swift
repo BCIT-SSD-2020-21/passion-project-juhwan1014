@@ -51,6 +51,13 @@ extension SearchBarViewController: UICollectionViewDataSource{
    
 }
 extension SearchBarViewController: UICollectionViewDelegate{
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let movie = movies[indexPath.item]
+        let sb = UIStoryboard(name: "Player", bundle: nil)
+        let vc = sb.instantiateViewController(identifier: "PlayerViewController") as! PlayerViewController
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: false, completion: nil)
+    }
     
 }
 extension SearchBarViewController: UICollectionViewDelegateFlowLayout{
