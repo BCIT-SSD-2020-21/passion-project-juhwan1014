@@ -18,7 +18,8 @@ class PlayerViewController: UIViewController {
     let player = AVPlayer()
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return .landscapeRight
+//        return .landscapeRight
+        return .landscape
     }
 
     override func viewDidLoad() {

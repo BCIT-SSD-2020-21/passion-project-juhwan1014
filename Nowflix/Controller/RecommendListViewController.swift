@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class RecommendListViewController: UIViewController {
 
@@ -115,12 +116,16 @@ class RecommentListViewModel {
     }
     
     private (set) var type: RecommendingType = .my
+//    private var items: [String] = []
     private var items: [DummyItem] = []
     
     var numOfItems: Int {
         return items.count
     }
     
+//    func item(at index: Int) -> String {
+//        return items[index]
+//    }
     func item(at index: Int) -> DummyItem {
         return items[index]
     }
@@ -130,9 +135,12 @@ class RecommentListViewModel {
     }
     
     func fetchItems() {
-        if MovieFetcher.fetch(type) != nil{
+     
         self.items = MovieFetcher.fetch(type)
-        }
+        print("요긴 아이템 아래참고")
+        print(items)
+        print("요긴 아이텐 위에참고")
+        
     }
 }
 
@@ -141,8 +149,19 @@ class RecommendCell: UICollectionViewCell {
     @IBOutlet weak var thumbnailImage: UIImageView!
     
     func updateUI(movie: DummyItem) {
-        thumbnailImage.image = movie.thumbnail
+        let url = URL(string: "\(movie)")
+         thumbnailImage.kf.setImage(with: url)
+//        thumbnailImage.image = movie.thumbnail
     }
+    
+  
+
+//    func updateUI(movie: TheMovies) {
+//        let url = URL(string: "http://image.tmdb.org/t/p/w300\( movie.posterImage)")
+//        thumbnailImage.image = movie.thumbnail
+//    }
+    
+  
 }
 
 class MovieFetcher {
@@ -181,12 +200,16 @@ class MovieFetcher {
   
     
     static func fetch(_ type: RecommentListViewModel.RecommendingType) -> [DummyItem] {
+//        static func fetch(_ type: RecommentListViewModel.RecommendingType) -> [String] {
+        
+        
+        
     
-    let session = URLSession(configuration: .default)
-    
-    var ImageUrlComponents = URLComponents(string: "http://image.tmdb.org/t/p/w300")!
-    
-   
+//    let session = URLSession(configuration: .default)
+//
+//    var ImageUrlComponents = URLComponents(string: "http://image.tmdb.org/t/p/w300")!
+//
+//
     
     
         switch type {
@@ -195,12 +218,64 @@ class MovieFetcher {
             
 //            let myGroup = DispatchGroup()
 //
-//            var ImageURL: [String] = []
+            var ImageURL: [String] = []
+            var movies: [DummyItem] = []
+            let semaphore = DispatchSemaphore(value: 0)
+            
+            
 //            var movies: [DummyItem]?
 //
+//            DispatchQueue.main.async {
+            MovieAPI.PopularMovieData
+            { popMovies in
+                for i in 0...10{
+             ImageURL.append("http://image.tmdb.org/t/p/w300\(popMovies[i].posterImage!)")
+                    movies.append(DummyItem(thumbnail: ImageURL[i])  )
+            
+            }
+                print("우우우우우우우우우우우")
+                print("오오오오오오오오오오오")
+                print(movies[0])
+                
+                semaphore.signal()
+            }
+                
 //
-//            MovieAPI.PopularMovieData
-//            { popMovies in
+//            }
+
+//            for i in (0..<10){
+//                DispatchQueue.main.async {
+//            movies.append(DummyItem(thumbnail: ImageURL[i])  )
+//                }
+//            }
+//            movies = (0..<10).map{
+//                movies.append(DummyItem(thumbnail: ImageURL[$0])  )
+//            }
+           
+            
+//            if (movies.isEmpty == true){
+//                return DispatchQueue()
+//            }
+            _ = semaphore.wait(wallTimeout: .distantFuture)
+            
+            print("오오오오오오오오오오오")
+            print(movies)
+            print("아아아아아아아아아아아")
+          
+                return movies
+            
+//            return movies
+            
+        case .hot:
+                       
+        return []
+        case .my:
+        return []
+            
+//            let movies = (1..<10).map { DummyItem(thumbnail: UIImage(named: "img_movie_\($0)")!) }
+//            return movies
+            
+            
 //
 //                print("how many ? \(popMovies.count)")
 //                print("how many ? \(popMovies[0].posterImage)")
@@ -319,17 +394,29 @@ class MovieFetcher {
 //
 //             }
 // return movies
-                let movies = (1..<10).map { DummyItem(thumbnail: UIImage(named: "img_movie_\($0)")!) }
-            return movies
-        case .hot:
-            let movies = (10..<19).map { DummyItem(thumbnail: UIImage(named: "img_movie_\($0)")!) }
         
-
-            return movies
-        case .my:
-            let movies = (1..<10).map { $0 * 2 }.map { DummyItem(thumbnail: UIImage(named: "img_movie_\($0)")!) }
-          
-            return movies
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+//                let movies = (1..<10).map { DummyItem(thumbnail: UIImage(named: "img_movie_\($0)")!) }
+//            return movies
+//        case .hot:
+//            let movies = (10..<19).map { DummyItem(thumbnail: UIImage(named: "img_movie_\($0)")!) }
+//
+//
+//            return movies
+//        case .my:
+//            let movies = (1..<10).map { $0 * 2 }.map { DummyItem(thumbnail: UIImage(named: "img_movie_\($0)")!) }
+//
+//            return movies
         }
             
   
@@ -480,9 +567,11 @@ struct TheMovie: Codable{
 
 
 
+//struct DummyItem {
+//    let thumbnail: UIImage
+//}
 struct DummyItem {
-    let thumbnail: UIImage
+    let thumbnail: String
 }
-
 
 
