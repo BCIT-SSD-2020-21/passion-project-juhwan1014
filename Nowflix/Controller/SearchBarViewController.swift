@@ -41,9 +41,11 @@ extension SearchBarViewController: UICollectionViewDataSource{
       else {return UICollectionViewCell()}
         
         let movie = movies[indexPath.item]
+       
         let url = URL(string: movie.thumnailPath)!
-        
+    
         cell.movieThumnail.kf.setImage(with: url)
+      
         return cell
          
     }

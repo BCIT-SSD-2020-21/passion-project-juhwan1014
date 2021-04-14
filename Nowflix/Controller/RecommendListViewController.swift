@@ -74,6 +74,15 @@ extension RecommendListViewController: UICollectionViewDataSource {
         }
         
         let movie = viewModel.item(at: indexPath.item)
+        print("랜딩의 무비 바로 요 밑에")
+        print(movie)
+        print("이거 밑에 무비닷썹네일랑 셀")
+        print(movie.thumbnail)
+        let url = URL(string: "\(movie.thumbnail)")!
+//        print(url)
+        
+//        cell.thumbnailImage.kf.setImage(with: url)
+        print(cell)
         cell.updateUI(movie: movie)
         return cell
     }
@@ -91,6 +100,8 @@ extension RecommendListViewController: UICollectionViewDataSource {
 //    }
 //    }
 //}
+
+
 
 
 extension RecommendListViewController: UICollectionViewDelegateFlowLayout {
@@ -115,7 +126,7 @@ class RecommentListViewModel {
         }
     }
     
-    private (set) var type: RecommendingType = .my
+    private (set) var type: RecommendingType = .award
 //    private var items: [String] = []
     private var items: [DummyItem] = []
     
@@ -137,9 +148,9 @@ class RecommentListViewModel {
     func fetchItems() {
      
         self.items = MovieFetcher.fetch(type)
-        print("요긴 아이템 아래참고")
-        print(items)
-        print("요긴 아이텐 위에참고")
+//        print("요긴 아이템 아래참고")
+//        print(items)
+//        print("요긴 아이텐 위에참고")
         
     }
 }
@@ -149,9 +160,12 @@ class RecommendCell: UICollectionViewCell {
     @IBOutlet weak var thumbnailImage: UIImageView!
     
     func updateUI(movie: DummyItem) {
-        let url = URL(string: "\(movie)")
-         thumbnailImage.kf.setImage(with: url)
-//        thumbnailImage.image = movie.thumbnail
+//        print("이거 밑에 무비닷썹네일랑 유알엘")
+//        print(movie.thumbnail)
+//        let url = URL(string: "\(movie.thumbnail)")
+//        print(url!)
+//           thumbnailImage.kf.setImage(with: url!)
+        thumbnailImage.image = movie.thumbnail
     }
     
   
@@ -230,12 +244,18 @@ class MovieFetcher {
             { popMovies in
                 for i in 0...10{
              ImageURL.append("http://image.tmdb.org/t/p/w300\(popMovies[i].posterImage!)")
-                    movies.append(DummyItem(thumbnail: ImageURL[i])  )
+                    guard let url = URL(string: ImageURL[i]) else {return}
+                    
+                    let data = try? Data(contentsOf: url)
+                    if data != nil{
+                        movies.append(DummyItem(thumbnail:UIImage(data: data!)!  ))
+                    }
+//                    movies.append(DummyItem(thumbnail: ImageURL[i])  )
             
             }
-                print("우우우우우우우우우우우")
-                print("오오오오오오오오오오오")
-                print(movies[0])
+//                print("우우우우우우우우우우우")
+//                print("오오오오오오오오오오오")
+//                print(movies[0])
                 
                 semaphore.signal()
             }
@@ -258,9 +278,9 @@ class MovieFetcher {
 //            }
             _ = semaphore.wait(wallTimeout: .distantFuture)
             
-            print("오오오오오오오오오오오")
-            print(movies)
-            print("아아아아아아아아아아아")
+//            print("오오오오오오오오오오오")
+//            print(movies)
+//            print("아아아아아아아아아아아")
           
                 return movies
             
@@ -567,11 +587,11 @@ struct TheMovie: Codable{
 
 
 
-//struct DummyItem {
-//    let thumbnail: UIImage
-//}
 struct DummyItem {
-    let thumbnail: String
+    let thumbnail: UIImage
 }
+//struct DummyItem {
+//    let thumbnail: String
+//}
 
 
