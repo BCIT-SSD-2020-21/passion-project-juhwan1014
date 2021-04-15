@@ -583,6 +583,9 @@
                     <tabBarItem key="tabBarItem" title="Home" image="house.fill" catalog="system" id="hC7-RS-t3z"/>
                     <navigationItem key="navigationItem" id="gfB-BN-Rex"/>
                     <size key="freeformSize" width="414" height="1200"/>
+                    <connections>
+                        <outlet property="ImageHeader" destination="5ha-Tm-cUk" id="5us-WZ-UqP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KZa-4t-a2c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

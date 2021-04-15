@@ -6,10 +6,16 @@
 //
 
 import UIKit
+import Kingfisher
 import AVFoundation
 
 class HomeViewController: UIViewController {
 
+    
+    @IBOutlet private weak var ImageHeader: UIImageView!
+    
+
+    
     var awardRecommendListViewController: RecommendListViewController!
     var hotRecommendListViewController: RecommendListViewController!
     var myRecommendListViewController: RecommendListViewController!
@@ -36,11 +42,29 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+   
+        var HeaderImageString: [String] = []
+        let semaphore = DispatchSemaphore(value: 0)
+        
+        MovieAPI.PopularMovieData
+        { popMovies in
+            for i in 0...10{
+            HeaderImageString.append("http://image.tmdb.org/t/p/w300\(popMovies[i].posterImage!)")
+        }
+            semaphore.signal()
+        }
+        _ = semaphore.wait(wallTimeout: .distantFuture)
+        
+        let HeaderUrl = HeaderImageString[0]
+        
+        self.ImageHeader.setHeaderImage(HeaderUrl, placeholder: "placeholder")
+      
         // Do any additional setup after loading the view.
     }
     
-
+ 
+    
+    
     @IBAction func playButtonTapped(_ sender: Any) {
                 SearchAPI.search("interstella") { movies in
                     guard let interstella = movies.first else { return }
@@ -71,3 +95,20 @@ class HomeViewController: UIViewController {
         }
     }
   
+
+extension UIImageView{
+    func setHeaderImage(_ imageUrl: String, placeholder: String){
+        
+        
+      
+        print(imageUrl)
+        print("위에가 받아온 이미지 유알엘")
+        
+        self.kf.setImage(with: URL(string: imageUrl), placeholder: UIImage(named: placeholder))
+        
+//        ImageHeader.kf.indicatorType = .activity
+//        ImageHeader.kf.setImage(with: URL(string: "http://image.tmdb.org/t/p/w300/pgqgaUx1cJb5oZQQ5v0tNARCeBp.jpg") , placeholder: nil, options: [.transition(.fade(0.7))], progressBlock: nil )
+//
+        
+    }
+}
