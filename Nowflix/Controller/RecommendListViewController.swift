@@ -24,9 +24,9 @@ class RecommendListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        MovieAPI.PopularMovieData{(result) in print("쿨쿨 여기서 부터 리절트 \(result)")}
-
-        
+//        MovieAPI.PopularMovieData{(result) in print("쿨쿨 여기서 부터 리절트 \(result)")}
+//
+//        
         
         
 //        MovieAPI.getPopularData(){
@@ -81,9 +81,9 @@ extension RecommendListViewController: UICollectionViewDataSource {
         let url = URL(string: "\(movie.thumbnail)")!
 //        print(url)
         
-//        cell.thumbnailImage.kf.setImage(with: url)
+        cell.thumbnailImage.kf.setImage(with: url)
         print(cell)
-        cell.updateUI(movie: movie)
+//        cell.updateUI(movie: movie)
         return cell
     }
 }
@@ -121,22 +121,22 @@ class RecommentListViewModel {
             case .award: return "아카데미 호평 영황"
             case .hot: return "취한저격 HOT 콘텐츠"
             case .my: return "내가 찜한 콘텐츠"
-            
+                
             }
         }
     }
     
     private (set) var type: RecommendingType = .award
-//    private var items: [String] = []
+    //    private var items: [String] = []
     private var items: [DummyItem] = []
     
     var numOfItems: Int {
         return items.count
     }
     
-//    func item(at index: Int) -> String {
-//        return items[index]
-//    }
+    //    func item(at index: Int) -> String {
+    //        return items[index]
+    //    }
     func item(at index: Int) -> DummyItem {
         return items[index]
     }
@@ -146,11 +146,11 @@ class RecommentListViewModel {
     }
     
     func fetchItems() {
-     
+        
         self.items = MovieFetcher.fetch(type)
-//        print("요긴 아이템 아래참고")
-//        print(items)
-//        print("요긴 아이텐 위에참고")
+        //        print("요긴 아이템 아래참고")
+        //        print(items)
+        //        print("요긴 아이텐 위에참고")
         
     }
 }
@@ -159,14 +159,14 @@ class RecommentListViewModel {
 class RecommendCell: UICollectionViewCell {
     @IBOutlet weak var thumbnailImage: UIImageView!
     
-    func updateUI(movie: DummyItem) {
+//    func updateUI(movie: DummyItem) {
 //        print("이거 밑에 무비닷썹네일랑 유알엘")
 //        print(movie.thumbnail)
 //        let url = URL(string: "\(movie.thumbnail)")
 //        print(url!)
 //           thumbnailImage.kf.setImage(with: url!)
-        thumbnailImage.image = movie.thumbnail
-    }
+//        thumbnailImage.image = movie.thumbnail
+//    }
     
   
 
@@ -244,13 +244,13 @@ class MovieFetcher {
             { popMovies in
                 for i in 0...10{
              ImageURL.append("http://image.tmdb.org/t/p/w300\(popMovies[i].posterImage!)")
-                    guard let url = URL(string: ImageURL[i]) else {return}
-                    
-                    let data = try? Data(contentsOf: url)
-                    if data != nil{
-                        movies.append(DummyItem(thumbnail:UIImage(data: data!)!  ))
-                    }
-//                    movies.append(DummyItem(thumbnail: ImageURL[i])  )
+//                    guard let url = URL(string: ImageURL[i]) else {return}
+//
+//                    let data = try? Data(contentsOf: url)
+//                    if data != nil{
+//                        movies.append(DummyIt1em(thumbnail:UIImage(data: data!)!  ))
+//                    }
+                    movies.append(DummyItem(thumbnail: ImageURL[i])  )
             
             }
 //                print("우우우우우우우우우우우")
@@ -278,9 +278,9 @@ class MovieFetcher {
 //            }
             _ = semaphore.wait(wallTimeout: .distantFuture)
             
-//            print("오오오오오오오오오오오")
-//            print(movies)
-//            print("아아아아아아아아아아아")
+            print("오오오오오오오오오오오")
+            print(movies)
+            print("아아아아아아아아아아아")
           
                 return movies
             
@@ -587,11 +587,11 @@ struct TheMovie: Codable{
 
 
 
-struct DummyItem {
-    let thumbnail: UIImage
-}
 //struct DummyItem {
-//    let thumbnail: String
+//    let thumbnail: UIImage
 //}
+struct DummyItem {
+    let thumbnail: String
+}
 
 

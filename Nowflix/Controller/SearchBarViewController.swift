@@ -8,9 +8,11 @@
 import UIKit
 import Kingfisher
 import AVFoundation
+import Firebase
 
 class SearchBarViewController: UIViewController {
 
+    let db = Database.database().reference().child("searchHistory")
     
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -109,6 +111,9 @@ class ResultCell: UICollectionViewCell{
                 DispatchQueue.main.async {
                     self.movies = movies
                     self.resultCollectionView.reloadData()
+                    
+                    let timestamp: Double = Date().timeIntervalSince1970.rounded()
+                    self.db.childByAutoId().setValue(["term": searchTerm, "timestamp": timestamp])
                     
                 }
                 
