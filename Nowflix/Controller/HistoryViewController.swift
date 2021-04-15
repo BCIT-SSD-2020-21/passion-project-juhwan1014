@@ -31,12 +31,14 @@ class HistoryViewController: UIViewController {
             let decoder = JSONDecoder()
             let searchTerms = try! decoder.decode([SearchTerm].self, from: data)
             self.searchTerms = searchTerms
+            self.searchTerms = searchTerms.sorted(by: { (term1, term2) in
+             return term1.timestamp > term2.timestamp })
             self.tableView.reloadData() 
             print("---> snapshot: \(snapshot.value)")
         }
-
+        
     }
-
+    
 }
 
 
