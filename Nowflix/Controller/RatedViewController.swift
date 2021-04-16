@@ -1,5 +1,5 @@
 //
-//  DetailViewController.swift
+//  RatedViewController.swift
 //  Nowflix
 //
 //  Created by APPLE on 2021-04-15.
@@ -7,9 +7,11 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class RatedViewController: UIViewController {
 
-    @IBOutlet weak var PopularTableView: UITableView!
+   
+    @IBOutlet weak var RatedTableView: UITableView!
+    
     
     private var viewModel = RecommentListViewModel()
         
@@ -31,12 +33,12 @@ class DetailViewController: UIViewController {
         
 //        let semaphore = DispatchSemaphore(value: 0)
         
-           viewModel.fetchPopularMoviesData {
+           viewModel.fetchRatedMoviesData {
             [weak self] in
            
             DispatchQueue.main.sync(execute: {
-                self?.PopularTableView.dataSource = self
-                self?.PopularTableView.reloadData()
+                self?.RatedTableView.dataSource = self
+                self?.RatedTableView.reloadData()
             })
           
                 
@@ -49,7 +51,7 @@ class DetailViewController: UIViewController {
 
 }
 
-extension DetailViewController: UITableViewDataSource{
+extension RatedViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
       
         return viewModel.numberOfRowsInSection(section: section)
@@ -57,7 +59,7 @@ extension DetailViewController: UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = PopularTableView.dequeueReusableCell(withIdentifier: "PopularCell", for: indexPath) as? PopularTableViewCell else {
+        guard let cell = RatedTableView.dequeueReusableCell(withIdentifier: "RatedCell", for: indexPath) as? RatedTableViewCell else {
             return UITableViewCell()
         }
         

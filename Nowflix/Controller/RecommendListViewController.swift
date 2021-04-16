@@ -96,6 +96,30 @@ class RecommentListViewModel {
             completion()
         }
     }
+    
+    
+    func fetchRatedMoviesData(completion: @escaping () -> ()) {
+        
+        // weak self - prevent retain cycles
+        MovieAPI.TopRatedMovieData { [weak self] (Movies) in
+         
+            self?.popularMovies = Movies
+         
+            completion()
+        }
+    }
+    
+    
+    func fetchNowPlayingMoviesData(completion: @escaping () -> ()) {
+        
+        // weak self - prevent retain cycles
+        MovieAPI.PopularMovieData { [weak self] (popMovies) in
+         
+            self?.popularMovies = popMovies
+         
+            completion()
+        }
+    }
      
 
     func numberOfRowsInSection(section: Int) -> Int {

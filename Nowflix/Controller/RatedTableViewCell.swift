@@ -1,5 +1,5 @@
 //
-//  PopularTableViewCell.swift
+//  RatedTableViewCell.swift
 //  Nowflix
 //
 //  Created by APPLE on 2021-04-15.
@@ -7,14 +7,16 @@
 
 import UIKit
 
-class PopularTableViewCell: UITableViewCell {
+class RatedTableViewCell: UITableViewCell {
 
-    
     @IBOutlet weak var moviePoster: UIImageView!
     @IBOutlet weak var movieTitle: UILabel!
     @IBOutlet weak var movieYear: UILabel!
+    
     @IBOutlet weak var movieOverview: UILabel!
+    
     @IBOutlet weak var movieRate: UILabel!
+  
     
     private var urlString: String = ""
 
@@ -85,5 +87,5 @@ class PopularTableViewCell: UITableViewCell {
             return fixDate
         }
     
-    
+
 }
