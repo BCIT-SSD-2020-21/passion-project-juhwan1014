@@ -15,27 +15,27 @@ class HomeViewController: UIViewController {
     @IBOutlet private weak var ImageHeader: UIImageView!
     
     
-    var awardRecommendListViewController: RecommendListViewController!
-    var hotRecommendListViewController: RecommendListViewController!
-    var myRecommendListViewController: RecommendListViewController!
+    var popularRecommendListViewController: RecommendListViewController!
+    var ratedRecommendListViewController: RecommendListViewController!
+    var nowPlayingRecommendListViewController: RecommendListViewController!
 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "award" {
+        if segue.identifier == "popular" {
             let destinationVC = segue.destination as? RecommendListViewController
-            awardRecommendListViewController = destinationVC
-            awardRecommendListViewController.viewModel.updateType(.award)
-            awardRecommendListViewController.viewModel.fetchItems()
-        } else if segue.identifier == "hot" {
+            popularRecommendListViewController = destinationVC
+            popularRecommendListViewController.viewModel.updateType(.popular)
+            popularRecommendListViewController.viewModel.fetchItems()
+        } else if segue.identifier == "rated" {
             let destinationVC = segue.destination as? RecommendListViewController
-            hotRecommendListViewController = destinationVC
-            hotRecommendListViewController.viewModel.updateType(.hot)
-            hotRecommendListViewController.viewModel.fetchItems()
-        } else if segue.identifier == "my" {
+            ratedRecommendListViewController = destinationVC
+            ratedRecommendListViewController.viewModel.updateType(.rated)
+            ratedRecommendListViewController.viewModel.fetchItems()
+        } else if segue.identifier == "nowPlaying" {
             let destinationVC = segue.destination as? RecommendListViewController
-            myRecommendListViewController = destinationVC
-            myRecommendListViewController.viewModel.updateType(.my)
-            myRecommendListViewController.viewModel.fetchItems()
+            nowPlayingRecommendListViewController = destinationVC
+            nowPlayingRecommendListViewController.viewModel.updateType(.nowPlaying)
+            nowPlayingRecommendListViewController.viewModel.fetchItems()
         }
     }
     

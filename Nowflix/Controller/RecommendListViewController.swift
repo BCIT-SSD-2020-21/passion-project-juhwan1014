@@ -116,9 +116,9 @@ class RecommentListViewModel {
         
         // weak self - prevent retain cycles
         MovieAPI.NowPlayingMovieData { [weak self] (Movies) in
-         
+        
             self?.popularMovies = Movies
-         
+            self?.popularMovies.reverse()
             completion()
         }
     }
@@ -137,21 +137,21 @@ class RecommentListViewModel {
        }
     
     enum RecommendingType {
-        case award
-        case hot
-        case my
+        case popular
+        case rated
+        case nowPlaying
         
         var title: String {
             switch self {
-            case .award: return "Popular Movies"
-            case .hot: return "Top Rated Movies"
-            case .my: return "Now Plaing Movies in theatres"
+            case .popular: return "Popular Movies"
+            case .rated: return "Top Rated Movies"
+            case .nowPlaying: return "Now Plaing Movies in theatres"
                 
             }
         }
     }
     
-    private (set) var type: RecommendingType = .award
+    private (set) var type: RecommendingType = .popular
     
     private var items: [DummyItem] = []
     
@@ -192,7 +192,7 @@ class MovieFetcher {
         
         switch type {
         
-        case .award:
+        case .popular:
             var ImageURL: [String] = []
             var movies: [DummyItem] = []
             let semaphore = DispatchSemaphore(value: 0)
@@ -216,7 +216,7 @@ class MovieFetcher {
             return movies
             
             
-        case .hot:
+        case .rated:
             var ImageURL: [String] = []
             var movies: [DummyItem] = []
             let semaphore = DispatchSemaphore(value: 0)
@@ -239,7 +239,7 @@ class MovieFetcher {
 //
             return movies
             
-        case .my:
+        case .nowPlaying:
             var ImageURL: [String] = []
             var movies: [DummyItem] = []
             let semaphore = DispatchSemaphore(value: 0)

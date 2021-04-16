@@ -561,7 +561,7 @@
                                                     <constraint firstAttribute="height" constant="200" id="kTz-xu-rjA"/>
                                                 </constraints>
                                                 <connections>
-                                                    <segue destination="njb-az-ijg" kind="embed" identifier="award" id="R7a-Ew-fv9"/>
+                                                    <segue destination="njb-az-ijg" kind="embed" identifier="popular" id="R7a-Ew-fv9"/>
                                                 </connections>
                                             </containerView>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EVI-6U-ukM">
@@ -571,7 +571,7 @@
                                                     <constraint firstAttribute="height" constant="200" id="WdM-3y-Vus"/>
                                                 </constraints>
                                                 <connections>
-                                                    <segue destination="A4f-sJ-9cG" kind="embed" identifier="hot" id="dcp-u9-YdP"/>
+                                                    <segue destination="A4f-sJ-9cG" kind="embed" identifier="rated" id="dcp-u9-YdP"/>
                                                 </connections>
                                             </containerView>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Z4-mC-6oC">
@@ -581,7 +581,7 @@
                                                     <constraint firstAttribute="height" constant="200" id="4IQ-zU-dRy"/>
                                                 </constraints>
                                                 <connections>
-                                                    <segue destination="uNy-m6-Xf0" kind="embed" identifier="my" id="Jxi-QU-h9H"/>
+                                                    <segue destination="uNy-m6-Xf0" kind="embed" identifier="nowPlaying" id="Jxi-QU-h9H"/>
                                                 </connections>
                                             </containerView>
                                         </subviews>
