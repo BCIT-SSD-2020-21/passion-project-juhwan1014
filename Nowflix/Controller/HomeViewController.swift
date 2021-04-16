@@ -14,7 +14,6 @@ class HomeViewController: UIViewController {
     
     @IBOutlet private weak var ImageHeader: UIImageView!
     
-
     
     var awardRecommendListViewController: RecommendListViewController!
     var hotRecommendListViewController: RecommendListViewController!
@@ -42,7 +41,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-   
+        
         var HeaderImageString: [String] = []
         let semaphore = DispatchSemaphore(value: 0)
         

@@ -23,6 +23,7 @@ class RecommendListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
         
         //        MovieAPI.PopularMovieData{(result) in print("쿨쿨 여기서 부터 리절트 \(result)")}
         //
@@ -47,7 +48,10 @@ class RecommendListViewController: UIViewController {
 
 extension RecommendListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print("화긴화긴화긴화긴화화긴화긴")
+        print(viewModel.numOfItems)
         return viewModel.numOfItems
+      
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -77,6 +81,35 @@ extension RecommendListViewController: UICollectionViewDelegateFlowLayout {
 }
 
 class RecommentListViewModel {
+    
+    
+    private var popularMovies = [TheMovie]()
+    
+    
+    func fetchPopularMoviesData(completion: @escaping () -> ()) {
+        
+        // weak self - prevent retain cycles
+        MovieAPI.PopularMovieData { [weak self] (popMovies) in
+         
+            self?.popularMovies = popMovies
+         
+            completion()
+        }
+    }
+     
+
+    func numberOfRowsInSection(section: Int) -> Int {
+          if popularMovies.count != 0 {
+              return popularMovies.count
+          }
+          return 0
+      }
+    
+    
+    func cellForRowAt (indexPath: IndexPath) -> TheMovie {
+           return popularMovies[indexPath.row]
+       }
+    
     enum RecommendingType {
         case award
         case hot
@@ -116,6 +149,9 @@ class RecommentListViewModel {
         //        print("요긴 아이텐 위에참고")
         
     }
+    
+    
+    
 }
 
 
