@@ -937,6 +937,9 @@
                                 <state key="normal" title="  more" image="forward.fill" catalog="system">
                                     <color key="titleColor" red="0.84705882349999995" green="0.039215686270000001" blue="0.039215686270000001" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="OFg-bC-tKG" kind="show" id="Nhx-jg-R3l"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="PvZ-BW-aPE"/>
@@ -1084,13 +1087,13 @@
         <!--Search Details-->
         <scene sceneID="am6-HB-iIL">
             <objects>
-                <viewController id="OFg-bC-tKG" customClass="RatedViewController" customModule="Nowflix" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="OFg-bC-tKG" customClass="NowPlayingViewController" customModule="Nowflix" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DHo-bF-NgI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top Rated Movies" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Gh-EI-QQP">
-                                <rect key="frame" x="0.0" y="46" width="414" height="70"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Now Playing Movies" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Gh-EI-QQP">
+                                <rect key="frame" x="0.0" y="2" width="414" height="70"/>
                                 <color key="backgroundColor" red="0.84705882349999995" green="0.039215686270000001" blue="0.039215686270000001" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="ypQ-AF-vMF"/>
@@ -1100,10 +1103,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Sty-gT-u5m">
-                                <rect key="frame" x="0.0" y="110" width="414" height="786"/>
+                                <rect key="frame" x="0.0" y="66" width="414" height="776"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RatedCell" rowHeight="148" id="PSb-s7-05f" customClass="RatedTableViewCell" customModule="Nowflix" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NowPlayingCell" rowHeight="148" id="PSb-s7-05f" customClass="NowPlayingTableViewCell" customModule="Nowflix" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="148"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PSb-s7-05f" id="DKR-20-OBj">
@@ -1169,6 +1172,13 @@
                                             <constraint firstAttribute="trailing" secondItem="8zI-g2-fg2" secondAttribute="trailing" constant="29" id="vil-nl-loK"/>
                                             <constraint firstAttribute="trailing" secondItem="7xr-gy-dJv" secondAttribute="trailing" constant="17" id="y5g-fZ-Ozv"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="movieOverview" destination="7xr-gy-dJv" id="zKf-yJ-5am"/>
+                                            <outlet property="moviePoster" destination="pl2-3B-u3c" id="07w-pb-IxI"/>
+                                            <outlet property="movieRate" destination="irN-Xi-1b6" id="3kG-Bf-f7s"/>
+                                            <outlet property="movieTitle" destination="LhA-op-gWX" id="lZt-nu-9yT"/>
+                                            <outlet property="movieYear" destination="8zI-g2-fg2" id="eDw-aI-xGG"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -1188,6 +1198,9 @@
                     <tabBarItem key="tabBarItem" title="Search Details" image="magnifyingglass" catalog="system" id="3bt-8m-y9D"/>
                     <navigationItem key="navigationItem" id="BkO-8J-2v5"/>
                     <size key="freeformSize" width="414" height="896"/>
+                    <connections>
+                        <outlet property="NowPlayTableView" destination="Sty-gT-u5m" id="xC4-bh-3sC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Noq-Mn-Vam" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

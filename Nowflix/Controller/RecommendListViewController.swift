@@ -115,9 +115,9 @@ class RecommentListViewModel {
     func fetchNowPlayingMoviesData(completion: @escaping () -> ()) {
         
         // weak self - prevent retain cycles
-        MovieAPI.PopularMovieData { [weak self] (popMovies) in
+        MovieAPI.NowPlayingMovieData { [weak self] (Movies) in
          
-            self?.popularMovies = popMovies
+            self?.popularMovies = Movies
          
             completion()
         }
