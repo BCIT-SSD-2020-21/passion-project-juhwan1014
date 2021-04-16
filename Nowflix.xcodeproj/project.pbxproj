@@ -19,6 +19,7 @@
 		187F52F5262929D00004A9F1 /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187F52F4262929D00004A9F1 /* DetailTableViewCell.swift */; };
 		187F52F8262953940004A9F1 /* RatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187F52F7262953940004A9F1 /* RatedViewController.swift */; };
 		187F530126295A470004A9F1 /* RatedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187F530026295A470004A9F1 /* RatedTableViewCell.swift */; };
+		187F5304262960490004A9F1 /* NowPlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187F5303262960490004A9F1 /* NowPlayingViewController.swift */; };
 		188BACBE261FB69A00691F16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188BACBD261FB69A00691F16 /* AppDelegate.swift */; };
 		188BACC0261FB69A00691F16 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188BACBF261FB69A00691F16 /* SceneDelegate.swift */; };
 		188BACC2261FB69A00691F16 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188BACC1261FB69A00691F16 /* ViewController.swift */; };
@@ -43,6 +44,7 @@
 		187F52F4262929D00004A9F1 /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
 		187F52F7262953940004A9F1 /* RatedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatedViewController.swift; sourceTree = "<group>"; };
 		187F530026295A470004A9F1 /* RatedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatedTableViewCell.swift; sourceTree = "<group>"; };
+		187F5303262960490004A9F1 /* NowPlayingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingViewController.swift; sourceTree = "<group>"; };
 		188BACBA261FB69A00691F16 /* Nowflix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nowflix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		188BACBD261FB69A00691F16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		188BACBF261FB69A00691F16 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				187F52F4262929D00004A9F1 /* DetailTableViewCell.swift */,
 				187F52F7262953940004A9F1 /* RatedViewController.swift */,
 				187F530026295A470004A9F1 /* RatedTableViewCell.swift */,
+				187F5303262960490004A9F1 /* NowPlayingViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				187F5304262960490004A9F1 /* NowPlayingViewController.swift in Sources */,
 				188BACF026213D8900691F16 /* HomeViewController.swift in Sources */,
 				187F52D4262170810004A9F1 /* AppTabbarController.swift in Sources */,
 				187F52D7262183920004A9F1 /* SearchBarViewController.swift in Sources */,

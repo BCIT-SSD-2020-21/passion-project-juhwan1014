@@ -103,7 +103,9 @@ class RecommentListViewModel {
         // weak self - prevent retain cycles
         MovieAPI.TopRatedMovieData { [weak self] (Movies) in
          
+            
             self?.popularMovies = Movies
+            
          
             completion()
         }
@@ -257,7 +259,9 @@ class MovieFetcher {
 //            print("오오오오오오오오오오오")
 //            print(movies)
 //            print("아아아아아아아아아아아")
-//
+         
+             movies.reverse()
+            
             return movies
             
             
