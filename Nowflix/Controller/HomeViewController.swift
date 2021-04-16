@@ -8,6 +8,7 @@
 import UIKit
 import Kingfisher
 import AVFoundation
+import Firebase
 
 class HomeViewController: UIViewController {
 
@@ -43,8 +44,11 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         var HeaderImageString: [String] = []
-        let semaphore = DispatchSemaphore(value: 0)
+        var HeaderImageURL: [String] = []
         
+        
+        let semaphore = DispatchSemaphore(value: 0)
+
         MovieAPI.PopularMovieData
         { popMovies in
             for i in 0...10{
@@ -53,34 +57,114 @@ class HomeViewController: UIViewController {
             semaphore.signal()
         }
         _ = semaphore.wait(wallTimeout: .distantFuture)
-        
+
         let HeaderUrl = HeaderImageString[0]
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         
+        
+//        var searchTerms: [SearchTerm] = []
+//        let semaphore = DispatchSemaphore(value: 0)
+//
+//        let db = Database.database().reference().child("searchHistory")
+//
+//        db.observeSingleEvent(of: .value) { (snapshot) in
+//            guard let searchHistory = snapshot.value as? [String: Any] else {return}
+//
+//
+//            let data = try! JSONSerialization.data(withJSONObject: Array(searchHistory.values), options: [])
+//            let decoder = JSONDecoder()
+//            let searchTerms = try! decoder.decode([SearchTerm].self, from: data)
+//              searchTerms.sorted(by: { (term1, term2) in
+//             return term1.timestamp > term2.timestamp })
+////            semaphore.signal()
+////            _ = semaphore.wait(wallTimeout: .distantFuture)
+//
+//            SearchAPI.search(searchTerms[0].term) { movies in
+//            guard let interstella = movies.first else { return }
+//                HeaderImageString.append(interstella.thumnailPath)
+//                semaphore.signal()
+//    }
+//            _ = semaphore.wait(wallTimeout: .distantFuture)
+//
+//            print(HeaderImageString[0])
+//            print(HeaderImageString)
+//            print("화아아아악인")
+//            HeaderImageURL.append(HeaderImageString[0])
+//            print(HeaderImageURL[0])
+////            semaphore.signal()
+//        }
+////        _ = semaphore.wait(wallTimeout: .distantFuture)
+//        print(HeaderImageURL[0])
+//         print("와랄라랄라레")
+        
+        
+        
+        
+        
+        
+        
+        
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
         self.ImageHeader.setHeaderImage(HeaderUrl, placeholder: "placeholder")
-      
-        // Do any additional setup after loading the view.
+
+//         Do any additional setup after loading the view.
+    
+        
     }
     
  
     
     
     @IBAction func playButtonTapped(_ sender: Any) {
-                SearchAPI.search("interstella") { movies in
-                    guard let interstella = movies.first else { return }
+
         
-                    DispatchQueue.main.async {
-                        let url = URL(string: interstella.previewURL)!
-                        let item = AVPlayerItem(url: url)
-                        let sb = UIStoryboard(name: "Player", bundle: nil)
-                        let vc = sb.instantiateViewController(identifier: "PlayerViewController") as! PlayerViewController
-                        vc.player.replaceCurrentItem(with: item)
         
-                        vc.modalPresentationStyle = .fullScreen
-                        self.present(vc, animated: false, completion: nil)    }
-        
-//        SearchAPI.search("interstella") { movies in
-//            guard let interstella = movies.first else { return }
+//        var MovieIdString: [String] = []
+//        let semaphore = DispatchSemaphore(value: 0)
 //
+//        MovieAPI.PopularMovieData
+//        { popMovies in
+//
+//            for i in 0...10{
+//                MovieIdString.append("\(popMovies[i].ID!)")
+//        }
+//            semaphore.signal()
+//        }
+//        _ = semaphore.wait(wallTimeout: .distantFuture)
+//
+//
+//        func VideoMovieData(completion: @escaping ([TheMovie])-> Void){
+//            let session = URLSession(configuration: .default)
+//            let UrlComponents = URLComponents(string:
+//                "  https://api.themoviedb.org/3/movie/\(MovieIdString[0])/videos?api_key=6e4ef717279fab32a9cd5fb1cda17e55&language=en-US")!
+//            let RequestURL = UrlComponents.url!
+//            let DataTask = session.dataTask(with: RequestURL) {
+//                data, response, error in
+//                let successRange = 200..<300
+//                guard error == nil,
+//                      let statusCode = (response as? HTTPURLResponse)?.statusCode, successRange.contains(statusCode) else {
+//                    completion([])
+//                    return
+//                }
+//                guard let resultData = data else {
+//                    completion([])
+//                    return
+//                }
+//    //            let string = String(data: resultData, encoding: .utf8)
+//
+//                let nowplayingMovies = MovieAPI.parseTheMovies(resultData)
+//                completion(nowplayingMovies)
+//                print("--> result: \(nowplayingMovies.count)")
+//            }
+//
+//            DataTask.resume()
+//
+//        }
+        
+//        VideoMovieData { Movies in
+            
+            
 //            DispatchQueue.main.async {
 //                let url = URL(string: interstella.previewURL)!
 //                let item = AVPlayerItem(url: url)
@@ -89,19 +173,72 @@ class HomeViewController: UIViewController {
 //                vc.player.replaceCurrentItem(with: item)
 //
 //                vc.modalPresentationStyle = .fullScreen
-//                self.present(vc, animated: false, completion: nil)
-            }
-        }
+//                self.present(vc, animated: false, completion: nil)    }
+//        }
+        
+        
+//        func parseTheMovies(_ data: Data) -> [TheMovie] {
+//            let decoder = JSONDecoder()
+//
+//            do {
+//                let response = try decoder.decode(MoviesData.self, from: data)
+//
+//                let movies = response.TheMovies
+//                return movies
+//            }catch let error {
+//                print("--> parsing error: \(error.localizedDescription)")
+//                return []
+//            }
+//
+//        }
+        var searchTerms: [SearchTerm] = []
+
+        
+        let db = Database.database().reference().child("searchHistory")
+       
+        db.observeSingleEvent(of: .value) { (snapshot) in
+            guard let searchHistory = snapshot.value as? [String: Any] else {return}
+            
+            
+            let data = try! JSONSerialization.data(withJSONObject: Array(searchHistory.values), options: [])
+            let decoder = JSONDecoder()
+            let searchTerms = try! decoder.decode([SearchTerm].self, from: data)
+              searchTerms.sorted(by: { (term1, term2) in
+             return term1.timestamp > term2.timestamp })
+            
+            
+            
+            SearchAPI.search(searchTerms[0].term) { movies in
+            guard let interstella = movies.first else { return }
+  
+            DispatchQueue.main.async {
+                let url = URL(string: interstella.previewURL)!
+                let item = AVPlayerItem(url: url)
+                let sb = UIStoryboard(name: "Player", bundle: nil)
+                let vc = sb.instantiateViewController(identifier: "PlayerViewController") as! PlayerViewController
+                vc.player.replaceCurrentItem(with: item)
+
+                vc.modalPresentationStyle = .fullScreen
+                self.present(vc, animated: false, completion: nil)    }
     }
+
+        
+        }
+        
+
+        
+
+}
+    
+    
+    
+    
+}
   
 
 extension UIImageView{
     func setHeaderImage(_ imageUrl: String, placeholder: String){
         
-        
-      
-        print(imageUrl)
-        print("위에가 받아온 이미지 유알엘")
         
         self.kf.setImage(with: URL(string: imageUrl), placeholder: UIImage(named: placeholder))
         

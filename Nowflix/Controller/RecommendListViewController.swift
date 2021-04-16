@@ -370,6 +370,7 @@ class MovieAPI {
     }
     
     
+
     
     
     
@@ -408,12 +409,14 @@ struct TheMovie: Codable{
     let rate: Double?
     let posterImage: String?
     let overview: String?
+    let ID: String?
     
     private enum CodingKeys: String, CodingKey{
         case title, overview
         case year = "release_date"
         case rate = "vote_average"
         case posterImage = "poster_path"
+        case ID = "movie_id"
     }
 }
 
